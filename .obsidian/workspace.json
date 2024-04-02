@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "d8645b7a091c5722",
+        "id": "e5af70fe1ea81cd5",
         "type": "tabs",
         "children": [
           {
-            "id": "55daf466aa12e19b",
+            "id": "2696721376924a2d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Работа/Команды Kubernetes.md",
+                "file": "Работа/Установка kubernetes кластера через kubeadm.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Работа/Команды Kubernetes.md",
+                "file": "Работа/Установка kubernetes кластера через kubeadm.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Работа/Команды Kubernetes.md",
+                "file": "Работа/Установка kubernetes кластера через kubeadm.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Работа/Команды Kubernetes.md"
+                "file": "Работа/Установка kubernetes кластера через kubeadm.md"
               }
             }
           }
@@ -146,6 +146,12 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "55daf466aa12e19b",
-  "lastOpenFiles": []
+  "active": "2696721376924a2d",
+  "lastOpenFiles": [
+    "Работа/Установка kubernetes кластера через kubeadm.md",
+    "Работа/Команды Kubernetes.md",
+    "README.md",
+    "Работа/Keycloak.md",
+    "Работа/Команды Linux.md"
+  ]
 }

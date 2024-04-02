@@ -1,4 +1,3 @@
-
 ### *Посмотреть историю деплойментов сервиса:*
 ```bash
 helm history <name of service> -n <namespace>

@@ -3,5 +3,10 @@
   "cm-editor-syntax-highlight-obsidian",
   "editing-toolbar",
   "drawio-obsidian",
-  "obsidian-importer"
+  "obsidian-importer",
+  "obsidian-excalidraw-plugin",
+  "obsidian-icon-folder",
+  "homepage",
+  "dataview",
+  "obsidian-banners"
 ]

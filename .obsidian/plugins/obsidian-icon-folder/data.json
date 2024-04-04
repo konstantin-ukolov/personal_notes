@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "migrated": 4,
+    "iconPacksPath": ".obsidian/icons",
+    "fontSize": 16,
+    "emojiStyle": "none",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "FiDatabase",
+      "SiKeystone",
+      "SiUbuntu",
+      "BoBxlKubernetes",
+      "FiKey"
+    ],
+    "recentlyUsedIconsSize": 5,
+    "rules": [],
+    "extraMargin": {
+      "top": 0,
+      "right": 4,
+      "bottom": 0,
+      "left": 0
+    },
+    "iconInTabsEnabled": true,
+    "iconInTitleEnabled": true,
+    "iconInFrontmatterEnabled": false,
+    "iconsBackgroundCheckEnabled": false,
+    "iconsInNotesEnabled": true,
+    "iconsInLinksEnabled": true,
+    "iconIdentifier": ":"
+  },
+  "Работа/Gitlab Ultimate.md": "FiGitlab",
+  "Работа/Keycloak.md": "SiKeystone",
+  "Работа/Включение Аудит логов kubernetes.md": "BoBxlKubernetes",
+  "Работа/Команды Kubernetes.md": "BoBxlKubernetes",
+  "Работа/Установка kubernetes кластера через kubeadm.md": "BoBxlKubernetes",
+  "Работа/Команды Linux.md": "SiUbuntu",
+  "Работа/Возможные проблемы с longhorn.md": "FiDatabase"
+}

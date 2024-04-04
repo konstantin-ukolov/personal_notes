@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Работа/Gitlab Ultimate.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Работа/Gitlab Ultimate.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Работа/Gitlab Ultimate.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Работа/Gitlab Ultimate.md"
               }
             }
           }
@@ -144,25 +144,28 @@
       "daily-notes:Сегодняшняя заметка": false,
       "templates:Вставить шаблон": false,
       "command-palette:Открыть палитру команд": false,
-      "obsidian-importer:Open Importer": false
+      "obsidian-importer:Open Importer": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "homepage:Open homepage": false
     }
   },
   "active": "2696721376924a2d",
   "lastOpenFiles": [
-    "Работа/Установка kubernetes кластера через kubeadm.md",
-    "Работа/Keycloak.md",
-    "Работа/Включение Аудит логов kubernetes.md",
     "Работа/Возможные проблемы с longhorn.md",
-    "Работа/Команды Kubernetes.md",
+    "Работа/Keycloak.md",
+    "Работа/Установка kubernetes кластера через kubeadm.md",
     "Работа/Команды Linux.md",
+    "Работа/Команды Kubernetes.md",
+    "Работа/Включение Аудит логов kubernetes.md",
     "Работа/Gitlab Ultimate.md",
+    "gitlab-logo-500.svg",
+    "README.md",
     "Evernote/Возможные проблемы с longhorn/_resources",
     "Evernote/Возможные проблемы с longhorn",
     "Evernote",
     "Включение Аудит логов kubernetes/_resources",
     "Включение Аудит логов kubernetes",
     "Gitlab Ultimate/_resources",
-    "Gitlab Ultimate",
-    "README.md"
+    "Gitlab Ultimate"
   ]
 }

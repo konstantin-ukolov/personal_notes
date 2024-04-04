@@ -6,11 +6,11 @@
     "emojiStyle": "none",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "FiBookmark",
       "FiDatabase",
       "SiKeystone",
       "SiUbuntu",
-      "BoBxlKubernetes",
-      "FiKey"
+      "BoBxlKubernetes"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -34,5 +34,6 @@
   "Работа/Команды Kubernetes.md": "BoBxlKubernetes",
   "Работа/Установка kubernetes кластера через kubeadm.md": "BoBxlKubernetes",
   "Работа/Команды Linux.md": "SiUbuntu",
-  "Работа/Возможные проблемы с longhorn.md": "FiDatabase"
+  "Работа/Возможные проблемы с longhorn.md": "FiDatabase",
+  "Работа": "FiBookmark"
 }

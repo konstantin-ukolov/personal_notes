@@ -14,6 +14,7 @@ for p in $(kubectl get pods -n longhorn-system | grep Terminating | awk '{print 
 ```bash
 kubectl get pods -A --field-selector=status.phase!=Running | grep -v Complete
 ```
+> [!quote]
 [https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors/](https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors/)
 ### *Получить* список узлов и количество pod'ов на них:
 ```bash
@@ -24,11 +25,9 @@ jq '.items | group_by(.spec.nodeName) | map({"nodeName": .[0].spec.nodeName, "co
 ### *Вот* так с `kubectl top` можно получить pod'ы, которые потребляют максимальное количество процессора или памяти:
 ```bash
 # cpu
-
 kubectl top pods -A | sort --reverse --key 3 --numeric
 
 # memory
-
 kubectl top pods -A | sort --reverse --key 4 --numeric
 ```
 ### *Получить по каждому контейнеру каждого pod'а его limits и requests:**
@@ -50,36 +49,31 @@ kubectl logs -n kube-system etcd-cluster-m1 --follow --tail 1000
 ### *Вот так с `kubectl top` можно получить pod'ы, которые потребляют максимальное количество процессора или памяти:*
 ```bash
 # cpu
-
 kubectl top pods -A | sort --reverse --key 3 --numeric
 
 # memory
-
 kubectl top pods -A | sort --reverse --key 4 --numeric
 ```
 ### *Получить* внутренние IP-адреса узлов кластера:
 ```bash
 kubectl get nodes -o json | \
-
 jq -r '.items[].status.addresses[]? | select (.type == "InternalIP") | .address' | \
-
 paste -sd "\n" -
 ```
 ### *Вывести* все сервисы и nodePort, которые они занимают:
 ```bash
 kubectl get --all-namespaces svc -o json | \
-
 jq -r '.items[] | [.metadata.name,([.spec.ports[].nodePort | tostring ] | join("|"))]| @tsv'
 ```
 ### *Как* скопировать все секреты из одного пространства имён в другое?
 ```bash
 kubectl get secrets -o json --namespace namespace-old | \
-
 jq '.items[].metadata.namespace = "namespace-new"' | \
-
 kubectl create-f -
 ```
-https://habr.com/ru/company/flant/blog/512762/
+
+> [!quote]
+> https://habr.com/ru/company/flant/blog/512762/
 
 
 #k8s #kubernetes

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Работа/Установка kubernetes кластера через kubeadm.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Работа/Установка kubernetes кластера через kubeadm.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Работа/Установка kubernetes кластера через kubeadm.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Работа/Установка kubernetes кластера через kubeadm.md"
+                "file": "README.md"
               }
             }
           }
@@ -143,15 +143,26 @@
       "canvas:Создать новый холст": false,
       "daily-notes:Сегодняшняя заметка": false,
       "templates:Вставить шаблон": false,
-      "command-palette:Открыть палитру команд": false
+      "command-palette:Открыть палитру команд": false,
+      "obsidian-importer:Open Importer": false
     }
   },
   "active": "2696721376924a2d",
   "lastOpenFiles": [
     "Работа/Установка kubernetes кластера через kubeadm.md",
-    "Работа/Команды Kubernetes.md",
-    "README.md",
     "Работа/Keycloak.md",
-    "Работа/Команды Linux.md"
+    "Работа/Включение Аудит логов kubernetes.md",
+    "Работа/Возможные проблемы с longhorn.md",
+    "Работа/Команды Kubernetes.md",
+    "Работа/Команды Linux.md",
+    "Работа/Gitlab Ultimate.md",
+    "Evernote/Возможные проблемы с longhorn/_resources",
+    "Evernote/Возможные проблемы с longhorn",
+    "Evernote",
+    "Включение Аудит логов kubernetes/_resources",
+    "Включение Аудит логов kubernetes",
+    "Gitlab Ultimate/_resources",
+    "Gitlab Ultimate",
+    "README.md"
   ]
 }

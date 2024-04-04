@@ -1,55 +1,53 @@
+>[!info]
+Если при заходе на сервер не отображется история через history, то скорей всего вы загрузились не в bash а в dash исправить можно следующим образом
+После чего нужно перелогиниться и все заработает
 
-если при заходе на сервер не отображется история через history, то скорей всего вы загрузились не в bash а в dash исправить можно следующим образом:
 ```bash
 chsh -s /bin/bash
 ```
-После чего нужно перелогиниться и все заработает.
-1. Необходимо выключить swap на серверах:
+### *Необходимо выключить swap на серверах:*****
 ```bash
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
-     2. загрузить модули ядра с помощью команды:
+### ****Загрузить** модули ядра с помощью команды:
+
 ```bash
 sudo tee /etc/modules-load.d/containerd.conf <<EOF
-
 overlay
 br_netfilter
-
 EOF
 ```
-     3. Загружаем модули:
-```
+### *****Загружаем* модули:
+
+```bash
 sudo modprobe overlay
 sudo modprobe br_netfilter
 ```
-    4. Установить параметры ядра для Kubernetes с помощью команды:
-```
-sudo tee /etc/sysctl.d/kubernetes.conf <<EOF
+### ****Установить** параметры ядра для Kubernetes с помощью команды:
 
+```bash
+sudo tee /etc/sysctl.d/kubernetes.conf <<EOF
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 net.ipv4.ip_forward = 1
-
 EOF
 
 sudo sysctl --system
 ```
-  5. Установка CRIO runtime:
-       5.1. установливаем доп пакет для crio libseccomp и устанавливаем пакет для работы с apt через https и curl:
+### ****Установка** CRIO runtime:
+   
+   Устанавливаем доп пакет для crio libseccomp и устанавливаем пакет для работы с apt через https и curl:
 ```bash
 echo 'deb http://deb.debian.org/debian buster-backports main' > /etc/apt/sources.list.d/backports.list
 
 apt update
-
 apt install -y -t buster-backports libseccomp2 || apt update -y -t buster-backports libseccomp2
-
 apt install curl ca-certificates apt-transport-https -y
 ```
-      5.2. Устанавливаем сам crio.
+ Устанавливаем сам crio.
 ```bash
 OS=xUbuntu_20.04
-
 VERSION=1.26
 
 echo "deb [signed-by=/usr/share/keyrings/libcontainers-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
@@ -65,17 +63,15 @@ curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/
 apt-get update
 apt-get install cri-o cri-o-runc
 ```
-    5.3. включаем crio
+включаем crio
 ```bash
 sudo systemctl daemon-reload
-
 sudo systemctl restart crio
-
 sudo systemctl enable crio
-
 systemctl status crio
 ```
-6. Установка kubernetes:
+### ****Установка** kubernetes:
+
 ```bash
 sudo mkdir -m 755 /etc/apt/keyrings
 
@@ -84,44 +80,43 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.26/deb/Release.key | sudo gpg --
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.26/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 sudo apt-get update
-
 sudo apt-get install -y kubelet kubeadm kubectl
-
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-   6.1. Необходимо сделать инициализацию кластера на первой мастер ноду:
+Необходимо сделать инициализацию кластера на первой мастер ноду:
 ```bash
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --upload-certs --control-plane-endpoint=<IP или DNS адрес мастер ноды>
 ```
-   6.2. После инициализации первой ноды, необходимо сохранить строки подключения для ввода остальных нод в кластер:
+После инициализации первой ноды, необходимо сохранить строки подключения для ввода остальных нод в кластер:
 Так выглядит строка для ввода мастер нод:
-```
+```bash
 kubeadm join <IP или DNS мастера1>:6443 --token fatn03.qw1dqfp7sd1hrx3y --discovery-token-ca-cert-hash sha256:bab37552110b5b31706 --control-plane --certificate-key 8f7a98aabc0c5
 ```
 А так выглядит строка для воркер нод:
-```
+```bash
 kubeadm join srv-n-k8s-master01:6443 --token fatn03.qw1dqfp7sd1hrx3y --discovery-token-ca-cert-hash sha256:bab37552110b5b31706
 ```
-Если токен был утерян или протух, то строку подключения можно сгенерировать следующим образом:
-```
+ >[!warning]
+ >Если токен был утерян или протух, то строку подключения можно сгенерировать следующим образом:
+```bash
 kubeadm init phase upload-certs --upload-certs
-
 kubeadm token create --print-join-command <--выдаст строку для добавления воркер нод
 ```
-Чтобы иметь возможность ввести мастер в кластер, к полученной выше строке необходимо добавить:
+>[!tip]
+>Чтобы иметь возможность ввести мастер в кластер, к полученной выше строке необходимо добавить:
 ```
 --control-plane --certificate-key <ключ полученный ппосле выполнения команды в первой строчке>
 ```
- 7. Заходим на мастера и воркеры и выполняем команды join в кластер.
-
-8. Установка Flannel:
+ Заходим на мастера и воркеры и выполняем команды join в кластер.
+### **Установка Flannel:****
 Скачиваем манифест:
-```
+```bash
 wget https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
 ```
+
 Если при создании кластера мы выделяли сеть отличную от 10.244.0.0/16, то необходимо внести изменения в vim `kube-flannel.yml`
 
-```
+```bash
 net-conf.json: |
 {
 "Network": "10.244.0.0/16",
@@ -130,13 +125,15 @@ net-conf.json: |
 	}
 }
 ```
-Далее применяем манифест: `kubectl apply -f kube-flannel.yml`
-
-8. 1 правка конфига coredns
+Далее применяем манифест: 
+```
+kubectl apply -f kube-flannel.yml
+```
+### ****правка** конфига coredns
 
 После установки kubermetes возникла проболема, что под не может подключится по имени сервиса к другому поду. Исправил путем добавления строчки в configMan coreDNS:
 
-```
+```js
 .:53 {
 
 errors
@@ -163,8 +160,8 @@ reload
 loadbalance
 }
 ```
+### ****Установка** Longhorn:
 
-9. Установка Longhorn:
 На всех нодах кластера, где будут располагаться PVC Longhorn необходимо установить ряд пакетов.
 1. open-iscsi:
 ```
@@ -191,7 +188,8 @@ helm install longhorn longhorn/longhorn --namespace longhorn-system --create-nam
 ```
 sudo apt install haproxy -y
 ```
-2.Настраиваем конфиг по пути /etc/haproxy/haproxy.cfg:
+#### **Настраиваем конфиг по пути /etc/haproxy/haproxy.cfg:****
+
 ```yml
 global
 	log /dev/log local0 info
@@ -286,12 +284,15 @@ backend kube-apiserver
 	server kube-apiserver-2 172.24.19.250:6443 check
 	server kube-apiserver-3 172.24.19.251:6443 check
 ```
-3. Запускаем HAproxy: `systemctl enable haproxysystemctl start haproxy`
-11. настройка keepalived:
+#### Запускаем HAproxy: 
+```bash
+systemctl enable haproxysystemctl start haproxy
+```
+### ****настройка** keepalived:
 ```
 apt install keepalive -y
 ```
-Конфиг Мастер Ноды:
+#### **Конфиг Мастер Ноды:***
 ```yml
 global_defs {
 	router_id srv-n-k8s-master01
@@ -323,7 +324,7 @@ vrrp_instance haproxy-vip {
 	}
 }
 ```
-Конфиг для Бекап Ноды
+#### ****Конфиг** для Бекап Ноды
 ```yml
 global_defs {
 	router_id srv-n-k8s-master02
@@ -355,8 +356,7 @@ vrrp_instance haproxy-vip {
 	}
 }
 ```
-
-12. Перевыпускаем когфиг Api-server:
+### ****Перевыпускаем** когфиг Api-server:
 
 Для того чтобы иметь возможность подключиться к кластеру через ip балансира его нужно прописать в сертификате api-server. Чтобы это сделать нужно выполнить следующее:
 ```bash
@@ -375,23 +375,20 @@ extraArgs:
     authorization-mode: Node,RBAC
     
 1. Переносим старые сертфикаты, чтобы kubeadm смог создать новые:
-
 mv /etc/kubernetes/pki/apiserver.{crt,key} ~
 
 4. Генерируем новые сертификаты для api-server:
-
 kubeadm init phase certs apiserver --config kubeadm.yaml
 
 5. Перзапускаем поды api-server чтобы они подтянули новые сертификаты, проверяем что все работает штатно.
 6. Добавлеям наш kubeadm.yaml в кластер: kubeadm init phase upload-config kubeadm --config kubeadm.yaml
 ```
-13. Генерация Админ Конфига:
+### ****Генерация** Админ Конфига:
 > [!tip] 
 >Начиная с версии kebernetes > 1.24 перестали автоматически создаваться токены для сервис аккаунтов.
 
-Поэтому чтобы сгененировать Адним конфиг. Делаем следующее:
+#### **Поэтому чтобы сгененировать Адним конфиг. Делаем следующее:****
 1. Создаем Сервис Аккаунт:
-
 ```yml
 apiVersion: v1
 kind: ServiceAccount
@@ -399,9 +396,7 @@ metadata:
   name: devops
   namespace: default
 ```
-
 2. Создаем секрет:
-
 ```yml
 apiVersion: v1
 kind: Secret

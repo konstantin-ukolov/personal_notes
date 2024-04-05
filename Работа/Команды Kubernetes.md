@@ -72,6 +72,84 @@ kubectl get secrets -o json --namespace namespace-old | \
 jq '.items[].metadata.namespace = "namespace-new"' | \
 kubectl create-f -
 ```
+### Скалирование daemonset-ов в ноль:
+```yml
+spec:  
+  nodeSelector:  
+    non-existing: 'true'
+```
+### Привязка pod'а к определённой ноде:
+```yml
+
+#через nodeSelector:
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: s55-g95-c4
+
+#через affinity
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+            - s55-g95-c1
+            - s55-g95-c2
+    preferredDuringSchedulingIgnoredDuringExecution:
+    . - weight: 1
+        preference:
+          matchExpressions:
+          . - key: another-node-label-key
+              operator: In
+              values:
+                - another-node-label-value
+```
+Ingress nginx grpc:
+```yml
+annotations:
+  nginx.ingress.kubernetes.io/backend-protocol: GRPC
+  nginx.ingress.kubernetes.io/client-body-buffer-size: 1M
+  nginx.ingress.kubernetes.io/proxy-body-size: 8m
+  nginx.ingress.kubernetes.io/proxy-buffer-size: 16k
+  nginx.ingress.kubernetes.io/proxy-max-temp-file-size: 1024m
+  nginx.ingress.kubernetes.io/server-snippet: >-
+	keepalive_time 1d;
+	keepalive_timeout 600s;
+	keepalive_requests 100000;
+	proxy_next_upstream error timeout invalid_header http_502 http_503 http_504;
+	proxy_next_upstream_tries 3;
+	proxy_next_upstream_timeout 0;
+	grpc_next_upstream error timeout http_502 http_503 http_504
+	non_idempotent;
+	grpc_next_upstream_tries 3;
+	grpc_next_upstream_timeout 0;
+	grpc_buffer_size 64000k;
+	grpc_read_timeout 600s;
+	grpc_send_timeout 600s;
+	grpc_connect_timeout 600s;
+	grpc_socket_keepalive on;
+	output_buffers 4 3200k;
+	grpc_set_header x-real-ip $remote_addr;
+	grpc_set_header x-ray-id $request_id;
+	client_body_timeout 600s;
+	client_header_timeout 600s;
+	client_max_body_size 0;
+	proxy_connect_timeout 600s;
+	proxy_read_timeout 600s;
+	proxy_send_timeout 600s;
+	proxy_request_buffering off;
+	proxy_buffering off;
+	proxy_socket_keepalive on;
+	proxy_ignore_client_abort on;
+	fastcgi_read_timeout 600s;
+	send_timeout 600s;
+	proxy_max_temp_file_size 0;
+   nginx.ingress.kubernetes.io/service-upstream: 'true'
+   nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+```
+
 
 > [!quote]
 > https://habr.com/ru/company/flant/blog/512762/

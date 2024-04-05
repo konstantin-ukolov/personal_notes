@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "e5af70fe1ea81cd5",
+        "id": "24db54e08ec9d0ab",
         "type": "tabs",
         "children": [
           {
-            "id": "2696721376924a2d",
+            "id": "9b3ab7496e477ca7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Работа/Включение Аудит логов kubernetes.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Работа/Включение Аудит логов kubernetes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Работа/Включение Аудит логов kubernetes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Работа/Включение Аудит логов kubernetes.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -149,15 +141,17 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "2696721376924a2d",
+  "active": "2215e8bdb8656d03",
   "lastOpenFiles": [
-    "Работа/Возможные проблемы с longhorn.md",
+    "Работа/Обновление сертификатов на master-нодах k8s.md",
+    "Работа/ETCD Типовые приемы.md",
     "Работа/Команды Kubernetes.md",
+    "Работа/Включение Аудит логов kubernetes.md",
+    "Работа/Возможные проблемы с longhorn.md",
     "Работа/Команды Linux.md",
     "Работа/Установка kubernetes кластера через kubeadm.md",
     "Работа/Gitlab Ultimate.md",
     "Работа/Keycloak.md",
-    "Работа/Включение Аудит логов kubernetes.md",
     "gitlab-logo-500.svg",
     "README.md",
     "Evernote/Возможные проблемы с longhorn/_resources",

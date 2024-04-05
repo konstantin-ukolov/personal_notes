@@ -35,5 +35,7 @@
   "Работа/Установка kubernetes кластера через kubeadm.md": "BoBxlKubernetes",
   "Работа/Команды Linux.md": "SiUbuntu",
   "Работа/Возможные проблемы с longhorn.md": "FiDatabase",
-  "Работа": "FiBookmark"
+  "Работа": "FiBookmark",
+  "Работа/ETCD Типовые приемы.md": "BoBxlKubernetes",
+  "Работа/Обновление сертификатов на master-нодах k8s.md": "BoBxlKubernetes"
 }

@@ -1,4 +1,7 @@
 
+```
+kubectl describe deployments --namespace=ecp | grep -P '^Name:|ebr_ls_prod_pg_ind_profiles'
+```
 ### *Посмотреть историю деплойментов сервиса:*
 ```bash
 helm history <name of service> -n <namespace>

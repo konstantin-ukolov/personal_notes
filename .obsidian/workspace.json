@@ -4,18 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "24db54e08ec9d0ab",
+        "id": "12679471ded2b02e",
         "type": "tabs",
         "children": [
           {
-            "id": "9b3ab7496e477ca7",
+            "id": "848b009ddf111b40",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Работа/Команды Kubernetes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Команды Kubernetes"
+            }
+          },
+          {
+            "id": "cea78d4a1d5c1f2f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "hosts secret.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "hosts secret"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -35,7 +56,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
             }
           },
           {
@@ -50,7 +73,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
             }
           },
           {
@@ -58,7 +83,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
             }
           }
         ]
@@ -81,6 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Работа/Установка kubernetes кластера через kubeadm.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,7 +116,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки для Установка kubernetes кластера через kubeadm"
             }
           },
           {
@@ -97,9 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Работа/Установка kubernetes кластера через kubeadm.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки из Установка kubernetes кластера через kubeadm"
             }
           },
           {
@@ -110,7 +143,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
             }
           },
           {
@@ -118,7 +153,11 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Работа/Установка kubernetes кластера через kubeadm.md"
+              },
+              "icon": "lucide-list",
+              "title": "Структура Установка kubernetes кластера через kubeadm"
             }
           }
         ]
@@ -141,19 +180,22 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "2215e8bdb8656d03",
+  "active": "cea78d4a1d5c1f2f",
   "lastOpenFiles": [
-    "Работа/Обновление сертификатов на master-нодах k8s.md",
+    "Работа/Частые проблемы при работе.md",
     "Работа/ETCD Типовые приемы.md",
     "Работа/Команды Kubernetes.md",
-    "Работа/Включение Аудит логов kubernetes.md",
+    "Home.md",
     "Работа/Возможные проблемы с longhorn.md",
     "Работа/Команды Linux.md",
+    "hosts secret.md",
+    "README.md",
     "Работа/Установка kubernetes кластера через kubeadm.md",
     "Работа/Gitlab Ultimate.md",
+    "Работа/Обновление сертификатов на master-нодах k8s.md",
+    "Работа/Включение Аудит логов kubernetes.md",
     "Работа/Keycloak.md",
     "gitlab-logo-500.svg",
-    "README.md",
     "Evernote/Возможные проблемы с longhorn/_resources",
     "Evernote/Возможные проблемы с longhorn",
     "Evernote",

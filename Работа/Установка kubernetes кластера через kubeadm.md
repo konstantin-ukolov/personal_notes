@@ -108,7 +108,12 @@ kubeadm token create --print-join-command <--выдаст строку для д
 ```
 --control-plane --certificate-key <ключ полученный ппосле выполнения команды в первой строчке>
 ```
- Заходим на мастера и воркеры и выполняем команды join в кластер.
+Заходим на мастера и воркеры и выполняем команды join в кластер.
+  Для того чтобы иметь возможность использовать команды kubectl на мастер ноде, необходимо скопировать конфиг в домашнуюю директроию:
+```shell
+cp /etc/kubernetes/admin.conf /root/.kube/config
+cp /etc/kubernetes/admin.conf /home/<username>/.kube/config
+```
 ### **Установка Flannel:****
 Скачиваем манифест:
 ```bash
@@ -406,6 +411,11 @@ metadata:
 annotations:
   kubernetes.io/service-account.name: devops
   type: kubernetes.io/service-account-token
+```
+
+MTU 1375 для крректной работы:
+```bash
+sudo ip link set dev eth0 mtu 1350
 ```
 
 #k8s #kubernetes #longhorn

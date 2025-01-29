@@ -1,4 +1,5 @@
 
+
 посмотреть DHCP сервер:
 ```bash
 grep dhcp-server-identifier /var/lib/dhcp/dhclient/state/dhclient.leases
@@ -10,6 +11,11 @@ fdisk -l /dev/vda
 Посмотреть свободное место в разделе:
 ```bash
 parted /dev/sdb/ print free
+```
+Посмотреть активные сервисы:
+```bash
+systemctl --type=service --state=active
+systemctl --type=service --state=running
 ```
 Расширить раздел:
 ```bash
@@ -27,6 +33,19 @@ mount |grep /tmp
 Удалить большое количество файлов:
 ```bash
 find /opt/_Tomcat/dockarchive-api-28080/work/Catalina/localhost/api/ -name "*.tmp" -type f -print0 | xargs -0 /bin/rm -f
+```
+Удалить файлы старше чем:
+```bash
+find ~/Downloads -type f -mtime +35 -delete
+с указанием расширения:
+find ~/Downloads -name "*.zip" -type f -mtime +35 -delete
+```
+Посмотреть количество файлов  в папке:
+```bash
+Выдаст и файлы и каталоги:
+ls | wc -l
+Только файлы:
+find . -maxdepth 1 -type f | wc -l
 ```
 Добавить exec для папки:
 ```bash

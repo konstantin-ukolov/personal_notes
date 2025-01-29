@@ -1,11 +1,11 @@
 
 Проверка состояния кластера на примере prod кубера в ГЕОПе. Запуск команд в любом **поде** etcd:
 ```bash
-_ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key --write-out=table --endpoints=192.168.1.5:2379,192.168.1.4:2379,192.168.1.3:2379 endpoint status
+_ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key --write-out=table --endpoints=192.168.4.5:2379,192.168.4.3:2379,192.168.4.4:2379 endpoint status
 ```
 
 ```bash
-_ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key --write-out=table --endpoints=192.168.1.5:2379,192.168.1.4:2379,192.168.1.3:2379 endpoint health
+_ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key --write-out=table --endpoints=192.168.4.5:2379,192.168.4.3:2379,192.168.4.4:2379 endpoint health
 ```
 Сжатие бд etcd через консоль пода etcd на **каждой** ноде:
 ```bash

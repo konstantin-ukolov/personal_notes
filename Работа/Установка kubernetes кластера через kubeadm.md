@@ -40,10 +40,6 @@ sudo sysctl --system
    
    Устанавливаем доп пакет для crio libseccomp и устанавливаем пакет для работы с apt через https и curl:
 ```bash
-echo 'deb http://deb.debian.org/debian buster-backports main' > /etc/apt/sources.list.d/backports.list
-
-apt update
-apt install -y -t buster-backports libseccomp2 || apt update -y -t buster-backports libseccomp2
 apt install curl ca-certificates apt-transport-https -y
 ```
  Устанавливаем сам crio.
